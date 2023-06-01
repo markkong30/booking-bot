@@ -3,6 +3,10 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from dotenv import load_dotenv
+import time
+
+from booking.reserve_picker import reserve_picker
+from booking.login import login
 
 # Load environment variables from .env file
 load_dotenv()
@@ -15,18 +19,9 @@ driver.implicitly_wait(5)
 
 driver.get("https://www.toyoko-inn.com/login/")
 
-# Close the cookie dialog
-el = driver.find_element(By.CSS_SELECTOR, 'input[name="mail"]')
-action = webdriver.common.action_chains.ActionChains(driver)
-action.move_to_element_with_offset(el, 20, 20)
-action.click()
-action.perform()
+login(driver)
 
-driver.find_element(By.CSS_SELECTOR, 'input[name="mail"]').send_keys(
-    os.environ["TOYOKO_EMAIL"]
-)
-driver.find_element(By.CSS_SELECTOR, 'input[name="password"]').send_keys(
-    os.environ["TOYOKO_PASSWORD"]
-)
+driver.get("https://www.toyoko-inn.com/search/detail/00175/")
+driver.get("https://www.toyoko-inn.com/search/reserve/date")
 
-driver.find_element(By.CSS_SELECTOR, 'input[type="submit"]').click()
+reserve_picker(driver)
