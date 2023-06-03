@@ -1,7 +1,7 @@
-import os
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
+from booking.constants import login_email, login_password
 
 
 def login(driver: WebDriver):
@@ -12,11 +12,9 @@ def login(driver: WebDriver):
     action.click()
     action.perform()
 
-    driver.find_element(By.CSS_SELECTOR, 'input[name="mail"]').send_keys(
-        os.environ["TOYOKO_EMAIL"]
-    )
+    driver.find_element(By.CSS_SELECTOR, 'input[name="mail"]').send_keys(login_email)
     driver.find_element(By.CSS_SELECTOR, 'input[name="password"]').send_keys(
-        os.environ["TOYOKO_PASSWORD"]
+        login_password
     )
 
     driver.find_element(By.CSS_SELECTOR, 'input[type="submit"]').click()
