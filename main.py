@@ -7,8 +7,6 @@ from booking.reserve_detail import reserve_detail
 
 options = webdriver.ChromeOptions()
 options.add_experimental_option("detach", True)
-# options.add_argument(f"--force-device-scale-factor={0.5}")
-# options.add_argument("high-dpi-support=0.5")
 driver = webdriver.Chrome(options=options)
 driver.maximize_window()
 driver.implicitly_wait(5)
@@ -27,5 +25,4 @@ reserve_picker(driver)
 
 
 # resere detail
-
 reserve_detail(driver)
