@@ -1,19 +1,6 @@
 import tkinter as tk
 import ttkbootstrap as ttk
 
-from booking.index import initialize_booking
-
-
-def submit_form():
-    print(date_entry.get())
-    print(people_dropdown.get())
-    print(room_var.get())
-    print(hotel_entry.get())
-    print(row_entry.get())
-
-    initialize_booking()
-
-
 root = ttk.Window(themename="journal")
 root.title("Booking")
 root.geometry("400x300")
@@ -91,7 +78,7 @@ row_entry.pack(side="right", padx=5)
 
 
 # Submit button
-submit_button = ttk.Button(content_frame, text="Submit", command=submit_form)
+submit_button = ttk.Button(content_frame, text="Submit")
 submit_button.pack(pady=15, anchor="center")
 
 
