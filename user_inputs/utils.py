@@ -11,4 +11,4 @@ def add_form(root, content_frame, forms):
 
     # Update the geometry to accommodate the new forms
     root.update_idletasks()
-    root.geometry(f"400x{content_frame.winfo_height()}")
+    root.geometry(f"400x{len(forms) * 280}")

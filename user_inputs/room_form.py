@@ -4,7 +4,6 @@ from user_inputs.widgets.date import DateWidget
 from user_inputs.widgets.people import PeopleWidget
 from user_inputs.widgets.room_type import RoomWidget
 from user_inputs.widgets.header import HeaderWidget
-from user_inputs.widgets.add_room_btn import AddRoomButton
 
 
 class FormComponent(ttk.Frame):
@@ -12,13 +11,9 @@ class FormComponent(ttk.Frame):
         super().__init__(master, padding="10")
         self.index = index
 
-        # Create a frame for the header and add_room_btn
-        header_frame = ttk.Frame(self)
-        header_frame.pack(anchor="w", pady=5)
-
         # Room header
-        self.room_header = HeaderWidget(header_frame, self.index)
-        self.room_header.pack(side="left")
+        self.room_header = HeaderWidget(self, self.index)
+        self.room_header.pack(anchor="w", pady=5)
 
         # Date input
         self.date_widget = DateWidget(self)

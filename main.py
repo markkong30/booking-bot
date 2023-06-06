@@ -1,14 +1,14 @@
 import ttkbootstrap as ttk
 
+from user_inputs.hotel_details import HotelDetailsWidget
 from user_inputs.room_form import FormComponent
-from user_inputs.widgets.submit_btn import SubmitButton
-from user_inputs.widgets.add_room_btn import AddRoomButton
+from user_inputs.buttons import ButtonsWidget
 from user_inputs.utils import add_form
 
 
 root = ttk.Window(themename="journal")
 root.title("Booking")
-root.geometry("400x300")
+root.geometry("400x400")
 
 # Create a frame to hold the content
 content_frame = ttk.Frame(root, padding="20")
@@ -19,22 +19,22 @@ content_frame.place(relx=0.5, rely=0.5, anchor="center")
 forms = []
 
 
+hotel_details = HotelDetailsWidget(content_frame)
+hotel_details.pack()
+
 # Create the initial form component
 initial_form = FormComponent(content_frame, index=0)
 initial_form.pack()
 forms.append(initial_form)
 
+cta_btns = ButtonsWidget(
+    content_frame,
+    root=root,
+    forms=forms,
+    add_form=add_form,
+    hotel_details=hotel_details,
+)
+cta_btns.pack()
 
-# Create a frame to hold the buttons
-button_frame = ttk.Frame(content_frame)
-button_frame.pack(side="bottom", pady=30)
-
-# Add room button
-add_room_btn = AddRoomButton(button_frame, lambda: add_form(root, content_frame, forms))
-add_room_btn.pack(side="left", padx=35)
-
-# Submit button
-submit_btn = SubmitButton(button_frame, forms)
-submit_btn.pack(side="right", padx=35)
 
 root.mainloop()
