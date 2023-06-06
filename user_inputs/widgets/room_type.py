@@ -13,14 +13,14 @@ class RoomWidget(ttk.Frame):
         self.single_radio = ttk.Radiobutton(
             self, text="Single", value="single", variable=self.room_var
         )
-        self.single_radio.pack(side="right", padx=5)
+        self.single_radio.pack(side="left", padx=5)
 
         self.double_radio = ttk.Radiobutton(
             self, text="Double", value="double", variable=self.room_var
         )
-        self.double_radio.pack(side="right", padx=5)
+        self.double_radio.pack(side="left", padx=5)
 
         self.twin_radio = ttk.Radiobutton(
             self, text="Twin", value="twin", variable=self.room_var
         )
-        self.twin_radio.pack(side="right", padx=5)
+        self.twin_radio.pack(side="left", padx=5)
