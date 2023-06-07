@@ -8,9 +8,7 @@ from booking.constants import Room_type_text
 
 def change_room(driver: WebDriver, room_number: int, room_type_entry: str):
     # change room type
-    change_room_btn = driver.find_element(
-        By.CSS_SELECTOR, f".jsLinkRoom:nth-of-type({room_number})"
-    )
+    change_room_btn = driver.find_elements(By.CLASS_NAME, "jsLinkRoom")[room_number - 1]
     scroll_into_view(driver, change_room_btn)
     change_room_btn.click()
 
