@@ -15,10 +15,6 @@ class FormComponent(ttk.Frame):
         self.room_header = HeaderWidget(self, self.index)
         self.room_header.pack(anchor="w", pady=5)
 
-        # Date input
-        self.date_widget = DateWidget(self)
-        self.date_widget.pack(anchor="w", pady=5)
-
         # Number of people
         self.people_widget = PeopleWidget(self)
         self.people_widget.pack(anchor="w", pady=5)
@@ -28,8 +24,7 @@ class FormComponent(ttk.Frame):
         self.room_widget.pack(anchor="w", pady=5)
 
     def get_values(self):
-        date = self.date_widget.date_entry.get()
         number_of_people = self.people_widget.people_dropdown.get()
         room_type = self.room_widget.room_var.get()
 
-        return date, number_of_people, room_type
+        return number_of_people, room_type

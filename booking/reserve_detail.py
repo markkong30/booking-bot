@@ -5,9 +5,12 @@ from selenium.webdriver.support.ui import Select
 
 from booking.constants import mobile_number
 from booking.utils import scroll_into_view
+from booking.change_room import change_room
 
 
-def reserve_detail(driver: WebDriver):
+def reserve_detail(driver: WebDriver, form_values: dict):
+    room_1 = form_values.get("room_1")
+
     # fill mobile number
     mobile_input = driver.find_element(By.NAME, "room[0][tlpn]")
     scroll_into_view(driver, mobile_input)
@@ -16,6 +19,9 @@ def reserve_detail(driver: WebDriver):
     # select check in time
     check_in_time = Select(driver.find_element(By.NAME, "room[0][checkin_tm]"))
     check_in_time.select_by_value("23:59:00")
+
+    # change room type
+    change_room(driver, 1, room_1["room_type"])
 
     # add more room
 

@@ -22,5 +22,7 @@ class ButtonsWidget(ttk.Frame):
         self.add_room_btn.pack(side="left", padx=35)
 
         # Submit button
-        self.submit_btn = SubmitButton(button_frame, self.forms, self.hotel_details)
+        self.submit_btn = SubmitButton(
+            button_frame, self.forms, self.hotel_details, self.root
+        )
         self.submit_btn.pack(side="right", padx=35)

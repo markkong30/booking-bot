@@ -25,3 +25,9 @@ class Room_type(Enum):
     SINGLE = "10"
     DOUBLE = "20"
     TWIN = "30"
+
+
+class Room_type_text(Enum):
+    SINGLE = "禁煙　シングル"
+    DOUBLE = "禁煙　ダブル"
+    TWIN = "禁煙　ツイン"

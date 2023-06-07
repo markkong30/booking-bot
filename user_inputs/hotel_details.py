@@ -1,6 +1,7 @@
 import ttkbootstrap as ttk
 from user_inputs.widgets.hotel_id import HotelIdWidget
 from user_inputs.widgets.room_row import RoomRowWidget
+from user_inputs.widgets.date import DateWidget
 
 
 class HotelDetailsWidget(ttk.Frame):
@@ -12,11 +13,11 @@ class HotelDetailsWidget(ttk.Frame):
         self.hotel_id_widget.pack(anchor="w", pady=5)
 
         # Room row
-        self.room_row_widget = RoomRowWidget(self)
-        self.room_row_widget.pack(anchor="w", pady=5)
+        self.date_widget = DateWidget(self)
+        self.date_widget.pack(anchor="w", pady=5)
 
     def get_values(self):
         hotel_id = self.hotel_id_widget.hotel_id_entry.get()
-        room_row = self.room_row_widget.room_row_entry.get()
+        date = self.date_widget.date_entry.get()
 
-        return hotel_id, room_row
+        return hotel_id, date
