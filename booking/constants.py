@@ -31,3 +31,8 @@ class Room_type_text(Enum):
     SINGLE = "禁煙　シングル"
     DOUBLE = "禁煙　ダブル"
     TWIN = "禁煙　ツイン"
+
+
+class Gender(Enum):
+    MALE = "1"
+    FEMALE = "2"

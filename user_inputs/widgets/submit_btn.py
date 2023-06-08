@@ -15,10 +15,19 @@ class SubmitButton(ttk.Button):
     def get_forms_value(self):
         values = {}
         for i, form in enumerate(self.forms):
-            number_of_people, room_type = form.get_values()
+            (
+                number_of_people,
+                room_type,
+                first_name,
+                last_name,
+                gender,
+            ) = form.get_values()
             values[f"room_{i + 1}"] = {
                 "number_of_people": number_of_people,
                 "room_type": room_type,
+                "first_name": first_name,
+                "last_name": last_name,
+                "gender": gender,
             }
 
         hotel_id, date = self.hotel_details.get_values()

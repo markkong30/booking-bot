@@ -1,6 +1,5 @@
 import ttkbootstrap as ttk
 from user_inputs.widgets.hotel_id import HotelIdWidget
-from user_inputs.widgets.room_row import RoomRowWidget
 from user_inputs.widgets.date import DateWidget
 
 
