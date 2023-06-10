@@ -3,7 +3,8 @@ import ttkbootstrap as ttk
 from user_inputs.hotel_details import HotelDetailsWidget
 from user_inputs.room_form import FormComponent
 from user_inputs.buttons import ButtonsWidget
-from user_inputs.utils import add_form
+from user_inputs.time import TimeLabel
+from user_inputs.utils import add_form, pack_time_label
 
 
 root = ttk.Window(themename="journal")
@@ -27,12 +28,19 @@ initial_form = FormComponent(content_frame, index=0)
 initial_form.pack()
 forms.append(initial_form)
 
+
+time_label = TimeLabel(content_frame)
+
+
 cta_btns = ButtonsWidget(
     content_frame,
     root=root,
     forms=forms,
     add_form=add_form,
     hotel_details=hotel_details,
+    pack_time_label=lambda time: pack_time_label(
+        time_label, forms, hotel_details, cta_btns, time
+    ),
 )
 cta_btns.pack()
 

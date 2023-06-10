@@ -19,13 +19,13 @@ def initialize_booking(form_values: dict):
     # login
     driver.get("https://www.toyoko-inn.com/login/")
 
-    login(driver)
+    driver.quit()
+    # login(driver)
+    # # reserve selection
+    # driver.get(f"https://www.toyoko-inn.com/search/detail/{hotel_id}/")
+    # driver.get("https://www.toyoko-inn.com/search/reserve/date")
 
-    # reserve selection
-    driver.get(f"https://www.toyoko-inn.com/search/detail/{hotel_id}/")
-    driver.get("https://www.toyoko-inn.com/search/reserve/date")
+    # reserve_picker(driver, form_values)
 
-    reserve_picker(driver, form_values)
-
-    # resere detail
-    reserve_detail(driver, form_values)
+    # # resere detail
+    # reserve_detail(driver, form_values)
