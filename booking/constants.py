@@ -7,6 +7,7 @@ load_dotenv()
 login_email = os.environ["TOYOKO_EMAIL"]
 login_password = os.environ["TOYOKO_PASSWORD"]
 mobile_number = os.environ["MOBILE_NUMBER"]
+booking_time = os.environ["BOOKING_TIME"]
 
 
 class Smoking_type(Enum):

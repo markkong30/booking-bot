@@ -31,7 +31,6 @@ forms.append(initial_form)
 
 time_label = TimeLabel(content_frame)
 
-
 cta_btns = ButtonsWidget(
     content_frame,
     root=root,

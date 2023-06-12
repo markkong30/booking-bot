@@ -1,10 +1,10 @@
 import ttkbootstrap as ttk
 import time
 import datetime
-import sys
 import threading
 
 from booking.index import initialize_booking
+from booking.constants import booking_time
 
 
 class SubmitButton(ttk.Button):
@@ -38,10 +38,11 @@ class SubmitButton(ttk.Button):
                 "gender": gender,
             }
 
-        hotel_id, date = self.hotel_details.get_values()
+        hotel_id, date, start_now = self.hotel_details.get_values()
 
         values["hotel_id"] = hotel_id
         values["date"] = date
+        values["start_now"] = start_now
 
         return values
 
@@ -53,8 +54,13 @@ class SubmitButton(ttk.Button):
         # Retrieve user inputs
         form_values = self.get_forms_value()
 
+        # Start booking process immediately if start now is checked
+        if form_values["start_now"] == "yes":
+            self.pack_time_label(datetime.timedelta(seconds=0))
+            return initialize_booking(form_values)
+
         # Wait until schedulde time
-        target_time = datetime.time(15, 0)
+        target_time = datetime.time(int(booking_time), 0)
         current_datetime = datetime.datetime.now()
         target_datetime = datetime.datetime.combine(
             current_datetime.date(), target_time
@@ -68,9 +74,5 @@ class SubmitButton(ttk.Button):
         self.pack_time_label(remaining_time)
         time.sleep(remaining_time.total_seconds())
 
-        # time.sleep(1)
-
         # Start booking process
         initialize_booking(form_values)
-
-        # self.root.destroy()
