@@ -1,5 +1,4 @@
 from user_inputs.room_form import FormComponent
-from user_inputs.widgets.time import TimeLabel
 
 
 def add_form(root, content_frame, forms):
@@ -23,5 +22,5 @@ def pack_time_label(time_label, forms, hotel_details, cta_btns, time):
 
     cta_btns.destroy()
 
-    time_label.set_time(time)
     time_label.pack()
+    time_label.set_time(time)

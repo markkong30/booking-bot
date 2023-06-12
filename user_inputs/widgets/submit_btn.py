@@ -48,32 +48,27 @@ class SubmitButton(ttk.Button):
     def start_program(self):
         t = threading.Thread(target=self.submit_form)
         t.start()
-        print("hi")
 
     def submit_form(self):
-        # Wait until schedulde time
-        # target_time = datetime.time(1, 0)
-        # current_datetime = datetime.datetime.now()
-        # target_datetime = datetime.datetime.combine(
-        #     current_datetime.date(), target_time
-        # )
-
-        # if current_datetime >= target_datetime:
-        #     target_datetime += datetime.timedelta(days=1)
-
-        # remaining_time = target_datetime - current_datetime
-        # minutes_remaining = int(remaining_time.total_seconds() // 60)
-        # hours = minutes_remaining // 60
-        # minutes = minutes_remaining % 60
-        # print(f"Sleeping for {hours} hours and {minutes} minutes")
-
-        # time.sleep(remaining_time.total_seconds())
-
         # Retrieve user inputs
         form_values = self.get_forms_value()
 
-        time.sleep(1)
-        self.pack_time_label("12 minutes")
+        # Wait until schedulde time
+        target_time = datetime.time(15, 0)
+        current_datetime = datetime.datetime.now()
+        target_datetime = datetime.datetime.combine(
+            current_datetime.date(), target_time
+        )
+
+        if current_datetime >= target_datetime:
+            target_datetime += datetime.timedelta(days=1)
+
+        remaining_time = target_datetime - current_datetime
+
+        self.pack_time_label(remaining_time)
+        time.sleep(remaining_time.total_seconds())
+
+        # time.sleep(1)
 
         # Start booking process
         initialize_booking(form_values)
