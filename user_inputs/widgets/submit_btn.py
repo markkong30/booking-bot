@@ -5,6 +5,7 @@ import threading
 
 from booking.index import initialize_booking
 from booking.constants import booking_time
+from booking.utils import has_empty_strings
 
 
 class SubmitButton(ttk.Button):
@@ -53,6 +54,10 @@ class SubmitButton(ttk.Button):
     def submit_form(self):
         # Retrieve user inputs
         form_values = self.get_forms_value()
+
+        if has_empty_strings(form_values):
+            print(form_values)
+            return print("Empty")
 
         # Start booking process immediately if start now is checked
         if form_values["start_now"] == "yes":
